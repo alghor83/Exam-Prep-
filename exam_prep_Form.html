@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Exam Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-row {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        select, input[type="date"], button {
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+        }
+        .conditional-row {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function toggleVisitRow() {
+            const visitRow = document.getElementById("visit-row");
+            const visitAnswer = document.getElementById("visit-answer").value;
+            visitRow.style.display = visitAnswer === "Yes" ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+    <h1>Instructor Exam Form</h1>
+    <form action="YOUR_SERVER_SCRIPT_URL" method="POST">
+        <!-- Instructor Name -->
+        <div class="form-row">
+            <label for="instructor-name">Instructor Name:</label>
+            <select id="instructor-name" name="instructor_name" required>
+                <option value="">Select your name</option>
+                <option value="Mark S Severance">Mark S Severance</option>
+                <option value="Zachary P Sperling">Zachary P Sperling</option>
+                <option value="Samuel Drake">Samuel Drake</option>
+                <option value="Maria Mihaela Johnson">Maria Mihaela Johnson</option>
+                <option value="Justice I Odiase">Justice I Odiase</option>
+                <option value="Michael P Pemberton">Michael P Pemberton</option>
+                <option value="Rostam Sabeti">Rostam Sabeti</option>
+            </select>
+        </div>
+
+        <!-- Course, Exam, and Date Rows -->
+        <div class="form-row">
+            <label>Course, Exam, and Exam Date:</label>
+            <!-- Repeat the following block 5 times -->
+            <div>
+                <select name="course_1">
+                    <option value="">Select a course</option>
+                    <option value="Precalculus - 80986 - MATH 126 - 010">Precalculus - 80986 - MATH 126 - 010</option>
+                    <option value="Precalculus - 80608 - MATH 126 - 020">Precalculus - 80608 - MATH 126 - 020</option>
+                    <option value="Calculus I - 80246 - MATH 151 - 010">Calculus I - 80246 - MATH 151 - 010</option>
+                    <!-- Add the remaining courses -->
+                </select>
+                <select name="exam_1">
+                    <option value="">Select an exam</option>
+                    <option value="Exam1">Exam1</option>
+                    <option value="Exam2">Exam2</option>
+                    <option value="Final Exam">Final Exam</option>
+                </select>
+                <input type="date" name="exam_date_1">
+            </div>
+        </div>
+        <!-- Repeat above course, exam, and date section 4 more times -->
+
+        <!-- Lead Tutor Visit -->
+        <div class="form-row">
+            <label for="visit-answer">Would you like a lead tutor to visit your class for 5 minutes?</label>
+            <select id="visit-answer" name="lead_tutor_visit" onchange="toggleVisitRow()" required>
+                <option value="">Select an answer</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <!-- Conditional Visit Details -->
+        <div id="visit-row" class="conditional-row">
+            <label>Course and Visit Date:</label>
+            <select name="visit_course">
+                <option value="">Select a course</option>
+                <option value="Precalculus - 80986 - MATH 126 - 010">Precalculus - 80986 - MATH 126 - 010</option>
+                <option value="Precalculus - 80608 - MATH 126 - 020">Precalculus - 80608 - MATH 126 - 020</option>
+                <option value="Calculus I - 80246 - MATH 151 - 010">Calculus I - 80246 - MATH 151 - 010</option>
+                <!-- Add the remaining courses -->
+            </select>
+            <input type="date" name="visit_date">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
